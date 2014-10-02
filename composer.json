@@ -1,5 +1,5 @@
 {
-  "name": "anahkiasen/former",
+  "name": "lygutas/former",
   "description": "A powerful form builder",
   "homepage": "http://anahkiasen.github.com/former/",
   "license": "MIT",
@@ -17,7 +17,7 @@
   ],
   "require": {
 		"php": ">=5.4.0",
-    "anahkiasen/html-object": "~1.4",
+    "anahkiasen/html-object": "dev-master",
     "illuminate/config": "~4.2",
     "illuminate/container": "~4.2",
     "illuminate/http": "~4.2",
