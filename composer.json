@@ -17,7 +17,7 @@
   ],
   "require": {
 		"php": ">=5.4.0",
-    "anahkiasen/html-object": "dev-master",
+    "lygutas/html-object": "~1.4",
     "illuminate/config": "~4.2",
     "illuminate/container": "~4.2",
     "illuminate/http": "~4.2",
