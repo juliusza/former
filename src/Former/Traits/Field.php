@@ -58,6 +58,20 @@ abstract class Field extends FormerObject implements FieldInterface
 	 */
 	protected $isSelfClosing = true;
 
+    /**
+     * Fields prepend html
+     *
+     * @var string
+     */
+    protected $prependedHtml = '';
+
+    /**
+     * Fields append html
+     *
+     * @var string
+     */
+    protected $appendedHtml = '';
+
 	/**
 	 * Get the current framework instance
 	 *
@@ -114,6 +128,7 @@ abstract class Field extends FormerObject implements FieldInterface
 	/**
 	 * Redirect calls to the group if necessary
 	 * @param string $method
+     * @return object
 	 */
 	public function __call($method, $parameters)
 	{
@@ -135,6 +150,41 @@ abstract class Field extends FormerObject implements FieldInterface
 
 		return parent::__call($method, $parameters);
 	}
+
+    /**
+     * Append html to field
+     *
+     * @param string $html
+     * @return object
+     */
+    public function appendHtml($html)
+    {
+        $this->appendedHtml = $html;
+        return $this;
+    }
+
+    /**
+     * Prepend html to field
+     *
+     * @param string $html
+     * @return object
+     */
+    public function prependHtml($html)
+    {
+        $this->prependedHtml = $html;
+        return $this;
+    }
+
+    /**
+     * Renders field with prepend and append html
+     * @return string
+     */
+    public function render()
+    {
+        return $this->prependedHtml .
+            parent::render() .
+            $this->appendedHtml;
+    }
 
 	/**
 	 * Prints out the field, wrapped in its group
@@ -236,6 +286,7 @@ abstract class Field extends FormerObject implements FieldInterface
 	 * Apply a Live Validation rule by chaining
 	 *
 	 * @param string $rule       The rule
+     * @return object
 	 */
 	public function rule($rule)
 	{
@@ -277,6 +328,7 @@ abstract class Field extends FormerObject implements FieldInterface
 	 * Set the Field value no matter what
 	 *
 	 * @param string $value A new value
+     * @return object
 	 */
 	public function forceValue($value)
 	{
@@ -289,6 +341,7 @@ abstract class Field extends FormerObject implements FieldInterface
 	 * Classic setting of attribute, won't overwrite any populate() attempt
 	 *
 	 * @param  string $value A new value
+     * @return object
 	 */
 	public function value($value)
 	{
@@ -306,6 +359,7 @@ abstract class Field extends FormerObject implements FieldInterface
 	 * Change the field's name
 	 *
 	 * @param  string $name The new name
+     * @return object
 	 */
 	public function name($name)
 	{
