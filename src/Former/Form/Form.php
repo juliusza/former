@@ -154,13 +154,7 @@ class Form extends FormerObject
 	{
 		static::$opened = false;
 
-		// Add token if necessary
-		$closing = '</form>';
-		if ($this->method != 'GET') {
-			$closing = $this->app['former']->token().$closing;
-		}
-
-		return $closing;
+		return '</form>';
 	}
 
 	////////////////////////////////////////////////////////////////////

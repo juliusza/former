@@ -29,13 +29,18 @@ class Hidden extends Field
 		parent::__construct($app, $type, $name, '', $value, $attributes);
 	}
 
-	/**
-	 * Outputs a hidden field
-	 *
-	 * @return string An <input type="hidden" />
-	 */
-	public function render()
-	{
-		return HtmlInput::create('hidden', $this->name, $this->value, $this->attributes)->render();
-	}
+    /**
+     * Outputs a hidden field
+     *
+     * @return string An <input type="hidden" />
+     */
+    public function render()
+    {
+        return HtmlInput::create(
+            'hidden',
+            $this->name,
+            Helpers::encode($this->value),
+            $this->attributes
+        )->render();
+    }
 }
